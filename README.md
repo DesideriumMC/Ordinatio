@@ -52,3 +52,12 @@ For optional integration, call the API only when FML reports the
 
 On Windows, run `./setup.ps1` and then `./build.ps1 build`. On Linux, run
 `./setup.sh` and then `./build.sh build`. The release JAR is in `build/libs/`.
+
+## License
+
+Copyright (c) 2026 DesideriumMC contributors. Ordinatio is licensed under the
+GNU Lesser General Public License version 3 only (`LGPL-3.0-only`).
+[LGPL 3.0 and incorporated GPL 3.0 terms](LICENSE)
+
+The Retrospectum template's MIT notice is included in the repository.
+[Template license](LICENSE-TEMPLATE)

@@ -26,6 +26,12 @@ def generateModConstants = tasks.register('generateModConstants') {
 }
 sourceSets.main.java.srcDir(generateModConstants)
 
+tasks.named('jar', Jar) {
+    from(files('LICENSE', 'LICENSE-TEMPLATE')) {
+        into 'META-INF'
+    }
+}
+
 tasks.named('processResources', ProcessResources) {
     def modInfo = [
         mod_id: modId,
@@ -76,6 +82,16 @@ retrospectum.mixinConfig(mixinConfigName)
 // Java variants expose the SRG release archive; dependency scopes follow Gradle conventions.
 publishing {
     publications {
-        mod(MavenPublication) { from components.java }
+        mod(MavenPublication) {
+            from components.java
+            pom {
+                licenses {
+                    license {
+                        name = 'GNU Lesser General Public License, version 3 only'
+                        url = 'https://www.gnu.org/licenses/lgpl-3.0.html'
+                    }
+                }
+            }
+        }
     }
 }
