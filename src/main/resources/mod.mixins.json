@@ -2,9 +2,9 @@
   "required": true,
   "minVersion": "0.8.7",
   "target": "@env(DEFAULT)",
-  "package": "example.mixin",
+  "package": "dev.desiderium.ordinatio.mixin",
   "compatibilityLevel": "JAVA_6",
   "refmap": "${mixin_refmap}",
-  "mixins": ["WorldMixin"],
+  "client": ["ConfigurationMixin", "ConfigCategoryAccessor", "GuiModListMixin"],
   "injectors": { "defaultRequire": 1 }
 }

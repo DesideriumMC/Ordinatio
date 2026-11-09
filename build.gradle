@@ -16,12 +16,12 @@ def generateModConstants = tasks.register('generateModConstants') {
     inputs.properties(values)
     outputs.dir(generatedConstants)
     doLast {
-        def output = generatedConstants.get().file('example/BuildConstants.java').asFile
+        def output = generatedConstants.get().file('dev/desiderium/ordinatio/BuildConstants.java').asFile
         output.parentFile.mkdirs()
         def fields = values.collect { key, value ->
             "    public static final String ${key} = ${groovy.json.JsonOutput.toJson(value)};"
         }.join('\n')
-        output.setText("package example;\n\npublic final class BuildConstants {\n${fields}\n    private BuildConstants() {}\n}\n", 'UTF-8')
+        output.setText("package dev.desiderium.ordinatio;\n\npublic final class BuildConstants {\n${fields}\n    private BuildConstants() {}\n}\n", 'UTF-8')
     }
 }
 sourceSets.main.java.srcDir(generateModConstants)
@@ -71,6 +71,7 @@ dependencies {
 }
 retrospectum.mixin('main', mixinRefmapName)
 retrospectum.mixinConfig(mixinConfigName)
+
 
 // Java variants expose the SRG release archive; dependency scopes follow Gradle conventions.
 publishing {
