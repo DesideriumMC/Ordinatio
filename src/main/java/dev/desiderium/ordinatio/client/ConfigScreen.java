@@ -8,6 +8,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.Property;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -353,7 +354,8 @@ final class ConfigScreen extends GuiScreen {
     private void drawDetails(Value value, int mouseY) {
         String details = value.category + " / " + value.key;
         if (value.registryId != null) {
-            details += "\n" + registryIdReason(value) + "\n" + tr("registryIdWarning");
+            details += "\n" + EnumChatFormatting.YELLOW + registryIdReason(value)
+                    + "\n" + EnumChatFormatting.YELLOW + tr("registryIdWarning") + EnumChatFormatting.RESET;
         }
         if (value.comment != null && !value.comment.isEmpty()) details += "\n" + value.comment;
         if (!value.editable) details += "\n" + tr("readOnly");
